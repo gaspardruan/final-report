@@ -5,7 +5,8 @@
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export",
+    "build-base": "slidev build --base /ppt/middle-report/"
   },
   "dependencies": {
     "@slidev/cli": "^0.48.8",
