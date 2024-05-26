@@ -463,47 +463,6 @@ flowchart TB
 layout: two-cols
 ---
 
-# 程序数据流
-
-```mermaid{ scale: 0.55}
-flowchart TB
-  subgraph b0 [BLOCK 0]
-    A["1: x, y = 0, 0"]
-  end
-
-  subgraph b1 [BLOCK 1]
-    B["2: x < 10"]
-  end
-
-  subgraph b3 [BLOCK 3]
-    E["4: print(y)"]
-  end
-
-  subgraph b2 [BLOCK 2]
-    C["3: y += x * 2"]
-    D["4: x += 1"]
-  end
-
-  b0 --> b1
-  b1 -->|false| b3
-  b1 -->|true| b2
-  b2 --> b1
-
-  A --> B
-  A --> C
-  D --> B
-  D --> C
-  A --> E
-  C --> E
-
-  S((Start))
-  S --> b0
-  O((Exit))
-  b3 --> O
-
-  linkStyle 4,5,6,7 stroke:blue,stroke-width:1px;
-  linkStyle 8,9 stroke:red,stroke-width:1px;
-```
 
 ::right::
 
