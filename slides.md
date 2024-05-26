@@ -7,68 +7,241 @@ drawings:
 mdc: true
 ---
 
-# 数据流和切片测试<br>工具的设计与实现
+# 数据流和切片测试工具<br/>的设计与实现<br/>
 
-中期检查报告
+北京航空航天大学软件学院
 
-阮中秋 19241030
+答辩人：阮中秋
 
-2024.4.3
+指导老师：贾经冬
 
+2024.5.27
+
+---
+
+# 项目背景及研究意义
+
+<div class="grid grid-cols-2 gap-x-4">
+  <div>
+
+  ### 课题来源
+
+  <div class="pl-8">
+
+  由指导教师根据课程假设提出
+
+  </div>
+  <br>
+
+  ### 项目背景与难点
+
+  - 源自编译代码优化，属于<span class="text-red-500 font-semibold">白盒测试</span>
+
+  - 当前提供完整数据流和切片测试功能的工具<span class="text-red-500 font-semibold">不存在</span>
+
+  - 实际应用多为<span class="text-red-500 font-semibold">静态分析</span>
+
+  </div>
+
+  <div>
+
+  ### 研究意义
+
+  - 软件测试的重要性：产品质量，用户体验，软件安全，更高利润，生成效率等
+
+  - 数据流和切片测试工具稀缺
+
+  - 帮助学生学习理解数据流和切片测试
+
+  </div>
+
+</div>
 
 ---
 
-# 研究目标
-
-基于数据流和切片测试思想，设计开发一个工具，能实现python代码高亮、可视化以及覆盖标准分析等功能，帮助学生理解数据流和切片测试的知识
-
-- 任给一段代码，选中一个变量，可以按照切片测试思想，给出对应**代码片段高亮**
-- 对如上高亮显示代码用图的形式绘制出方法和变量的包含关系，变量和变量的支持关系，等其他**可视化关系**
-- 对数据量测试，给定一个变量，分别显示方法中变量的**定义和使用代码行**，并给出**dc路径的绘制**
-- 任给一个测试用例，判断是否满足数据流测试的几种**覆盖标准**
-
----
-level: 2
----
-
-# 功能需求分析
-
-<div class="grid grid-cols-2 gap-5">
-<div>
-<h4>用例图</h4>
-<img
-  class="w-120"
-  src="/images/usecase.png"
-  alt=""
-/>
-</div>
-<div>
-<h4>功能模块划分</h4>
-<div class="mt-10">
-```mermaid
-block-beta
-    columns 2
-    控制流模块:2
-    程序切片模块:2
-    数据流模块:2
-    覆盖标准分析模块:2
-    文件管理模块:1 
-    设置管理模块:1
-```
-</div>
-
-</div>
-
-</div>
+# 研究目标和内容
 
 <style>
-h4 {
-  opacity: 0.7
-}
+  p {
+    line-height: 2;
+  }
 </style>
 
+<div class="grid grid-cols-3 gap-x-12">
+
+  <div class="col-span-1">
+
+  ### 研究目标
+
+  基于数据流和切片测试思想，设计开发一个工具，能实现python程序分析和结果可视化、代码高亮、覆盖标准分析等功能，帮助学生理解数据流和切片测试的知识
+
+  </div>
+
+<div class="col-span-2">
+
+  ### 研究内容概览
+
+  <div class="grid grid-cols-2 gap-y-4  mt-5">
+
+  <div class="text-center">
+
+  <img class="w-48 mx-auto border-2 shadow-md mb-2" src="/images/cfg-sample.png" alt="" />
+
+  ##### 控制流
+
+  </div>
+
+  <div class="text-center">
+
+  <img class="w-48 mx-auto border-2 shadow-md mb-2" src="/images/dc-sample.png" alt="" />
+
+  ##### 数据流
+
+  </div>
+
+  <div class="text-center">
+
+  <img class="w-60 mx-auto border-2 shadow-md mb-2" src="/images/slice-sample.png" alt="" />
+
+  ##### 程序切片高亮
+
+  </div>
+
+  <div class="text-center">
+
+  <img class="w-60 mx-auto border-2 shadow-md mb-2" src="/images/coverage-sample.png" alt="" />
+
+  ##### 覆盖标准分析
+
+  </div>
+
+</div>
+
+</div>
+
+</div>
+
 ---
-level: 2
+
+# 概要设计
+
+<div class="grid grid-cols-3 gap-x-4">
+
+<div class="col-span-2">
+
+### 架构设计
+
+<img class="w-130 mt-4 shadow-lg" src="/images/struct.png" alt=""  />
+
+</div>
+
+<div>
+
+### 技术概览
+
+<div class="grid grid-cols-3 gap-2 mt-4 border shadow-lg p-1">
+<div class="col-span-1 text-center">
+
+<logos-electron class="text-6xl" />
+
+##### Electron
+
+</div>
+
+<div class="col-span-2 text-center self-center underline decoration-sky-500 underline-offset-4 decoration-2">
+
+##### 跨平台桌面应用开发框架
+
+</div>
+
+</div>
+
+<div class="grid grid-cols-3 gap-2 mt-4 border shadow-lg p-1">
+<div class="col-span-1 text-center">
+
+<logos-react class="text-6xl" />
+
+##### React
+
+</div>
+
+<div class="col-span-2 text-center self-center underline decoration-sky-500 underline-offset-4 decoration-2">
+
+##### 用于构建交互界面的库
+
+</div>
+
+</div>
+
+<div class="grid grid-cols-3 gap-2 mt-4 border shadow-lg p1">
+<div class="col-span-1 text-center">
+
+<img class="w-18" src="/images/tree-sitter-small.png" />
+
+##### Electron
+
+</div>
+
+<div class="col-span-2 text-center self-center underline decoration-sky-500 underline-offset-4 decoration-2">
+
+##### 语法解析器生成器工具
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+---
+
+# 控制流——功能实现
+
+<div class="grid grid-cols-3 gap-x-4">
+
+  <div class="col-span-2">
+
+  ### 时序图
+
+  <img class="w-140 shadow-lg mt-4" src="/images/cfg-seq.png" alt="" />
+
+  </div>
+
+  <div>
+  
+  ### 预期结果
+
+  <div class="grid grid-cols-4 mt-4">
+
+  <div class="text-center self-center">
+    <Marker class="text-blue-400">none</Marker>
+  </div>
+
+  <div class="text-center self-center">
+    <Marker class="text-blue-400">if</Marker>
+  </div>
+
+  <div class="text-center self-center">
+    <Marker class="text-blue-400">loop</Marker>
+  </div>
+
+  <div class="text-center self-center">
+    <Marker class="text-blue-400">break</Marker>
+  </div>
+  
+  </div>
+
+  <img class="w-80 shadow-lg mt-4 border" src="/images/cfg-struct.png" alt="" />
+  
+  </div>
+
+</div>
+
+
+
+
+
 ---
 
 # UI设计
@@ -100,6 +273,7 @@ level:2
 ---
 
 # 功能实现逻辑
+
 <div class="w-full flex justify-center">
 ```mermaid { scale: 0.65 }
 flowchart TB
@@ -158,12 +332,15 @@ flowchart TB
     静态分析 --> 动态分析
 
 ```
+
 </div>
+
 
 ---
 layout: two-cols
 layoutClass: gap-16
 ---
+
 # 扩展语法树
 
 赋值语句
@@ -263,21 +440,22 @@ flowchart TB
   C["BLOCK 2\n 3: y += x * 2\n4: x += 1"]
   D["BLOCK 3\n 4: print(y)"]
 
-  A --> B
-  B -->|true| C
-  C --> B
-  B -->|false| D
+A --> B
+B -->|true| C
+C --> B
+B -->|false| D
+
 ```
 </div>
 </div>
-
-
+```
 
 ---
 layout: two-cols
 ---
 
 # 程序数据流
+
 ```mermaid{ scale: 0.55}
 flowchart TB
   subgraph b0 [BLOCK 0]
@@ -287,7 +465,7 @@ flowchart TB
   subgraph b1 [BLOCK 1]
     B["2: x < 10"]
   end
-  
+
   subgraph b3 [BLOCK 3]
     E["4: print(y)"]
   end
@@ -321,6 +499,7 @@ flowchart TB
 ::right::
 
 # 程序切片
+
 <div>
 ```python
 1: sum = 0
@@ -354,6 +533,7 @@ layoutClass: gap-16
 # 变量依赖
 
 <div>
+
 ```python
 1: x, y = 0, 0
 2: while x < 10:
@@ -361,8 +541,10 @@ layoutClass: gap-16
 4:   x += 1
 5: print(y)
 ```
+
 </div>
 <div>
+
 ```mermaid
 flowchart TB
   A["3: y"]
@@ -370,13 +552,15 @@ flowchart TB
   C["4: x"]
   D["1: x"]
 
-  A --> A
-  A --> B
-  A --> C
-  A --> D
-  C --> C
-  C --> D
+A --> A
+A --> B
+A --> C
+A --> D
+C --> C
+C --> D
+
 ```
+
 </div>
 
 ::right::
@@ -387,6 +571,7 @@ flowchart TB
 <div>
 <h6>测试函数</h6>
 <div>
+
 ```python
 def func(limit):
   x, y = 0, 0
@@ -395,14 +580,15 @@ def func(limit):
     x += 1
   print(y)
 ```
+
 </div>
 <h6>测试用例</h6>
 <div>
 
-| limit | 
-| ----- | 
-| 0 |
-| 10 |
+| limit |
+| ----- |
+| 0     |
+| 10    |
 
 </div>
 </div>
@@ -420,16 +606,21 @@ def func(limit):
 
 func(0)
 func(10)
-```
+
+````
+
 <h6>运行</h6>
+
 ```shell
 > python main.py
-```
+````
 
 <h6>收集执行路径</h6>
+
 ```shell
 1->2->3->4....
 ```
+
 </div>
 
 </div>
@@ -464,19 +655,16 @@ level: 2
 <div>
 
 - 将dc路径的绘制叠加到控制流图上，使其更加直观；
-- 项目测试尚未完成； 
+- 项目测试尚未完成；
 - ui优化，添加更多自定义设置；
-
 
 </div>
 
 <div>
 
-| 时间 | 工作 |
-|----- | ------|
-| 2024.4.3-2024.4.31 | 使用测试框架jest完成项目测试，其他在原有功能上修改和优化，然后撰写完整的毕设论文|
-
-
+| 时间               | 工作                                                                             |
+| ------------------ | -------------------------------------------------------------------------------- |
+| 2024.4.3-2024.4.31 | 使用测试框架jest完成项目测试，其他在原有功能上修改和优化，然后撰写完整的毕设论文 |
 
 </div>
 
