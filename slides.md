@@ -375,10 +375,86 @@ flowchart TB
 
 # 数据流——功能实现
 
+<div class="grid grid-cols-2 gap-x-4">
+
+<div>
+
+### 时序图
+
+<img class="w-100 shadow-lg mt-4" src="/images/df-seq.png" alt="" />
+
+</div>
+
+<div>
+
+### dc路径图
+
+<arrow x1="635" y1="330" x2="670" y2="330" color="#953"/>
+
+<div class="grid grid-cols-3 gap-x-4">
+
+<div class="col-span-1 self-center">
+
+```python
+1: x, y = 0, 0
+2: while x < 10:
+3:   y += x * 2
+4:   x += 1
+5: print(y)
+```
+
+</div>
 
 
+<div class="col-span-2">
 
+```mermaid{ scale: 0.55}
+flowchart TB
+  subgraph b0 [BLOCK 0]
+    A["1: x, y = 0, 0"]
+  end
 
+  subgraph b1 [BLOCK 1]
+    B["2: x < 10"]
+  end
+
+  subgraph b3 [BLOCK 3]
+    E["4: print(y)"]
+  end
+
+  subgraph b2 [BLOCK 2]
+    C["3: y += x * 2"]
+    D["4: x += 1"]
+  end
+
+  b0 --> b1
+  b1 -->|false| b3
+  b1 -->|true| b2
+  b2 --> b1
+
+  A --> B
+  A --> C
+  D --> B
+  D --> C
+  A --> E
+  C --> E
+
+  S((Start))
+  S --> b0
+  O((Exit))
+  b3 --> O
+
+  linkStyle 4,5,6,7 stroke:blue,stroke-width:1px;
+  linkStyle 8,9 stroke:red,stroke-width:1px;
+```
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 
 ---
