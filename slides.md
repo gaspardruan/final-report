@@ -383,6 +383,7 @@ flowchart TB
 
 <div class="grid grid-cols-2 gap16">
 <div>
+
 ```python
 1: x, y = 0, 0
 2: while x < 10:
@@ -390,8 +391,10 @@ flowchart TB
 4:   x += 1
 5: print(y)
 ```
+
 </div>
 <div>
+
 ```mermaid
 flowchart TB
   A["BLOCK 0\n 1: x, y = 0, 0"]
@@ -405,9 +408,9 @@ C --> B
 B -->|false| D
 
 ```
+
 </div>
 </div>
-```
 
 ---
 layout: two-cols
@@ -604,27 +607,3 @@ layout: image
 image: /images/test-case.png
 ---
 
----
-level: 2
----
-
-# 未完成的工作及安排
-
-<div class="grid grid-cols-2 gap-16 mt-10">
-<div>
-
-- 将dc路径的绘制叠加到控制流图上，使其更加直观；
-- 项目测试尚未完成；
-- ui优化，添加更多自定义设置；
-
-</div>
-
-<div>
-
-| 时间               | 工作                                                                             |
-| ------------------ | -------------------------------------------------------------------------------- |
-| 2024.4.3-2024.4.31 | 使用测试框架jest完成项目测试，其他在原有功能上修改和优化，然后撰写完整的毕设论文 |
-
-</div>
-
-</div>
