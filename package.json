@@ -9,12 +9,14 @@
     "build-base": "slidev build --base /ppt/middle-report/"
   },
   "dependencies": {
+    "@chenfengyuan/vue-countdown": "^2.1.2",
     "@slidev/cli": "^0.48.8",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "vue": "^3.4.21"
   },
   "devDependencies": {
+    "@iconify-json/logos": "^1.1.42",
     "playwright-chromium": "^1.42.1",
     "prettier": "^3.2.5",
     "prettier-plugin-slidev": "^1.0.5"
