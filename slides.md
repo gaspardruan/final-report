@@ -458,15 +458,30 @@ flowchart TB
 
 </div>
 
-
----
-layout: two-cols
 ---
 
+# 数据流——类设计
 
-::right::
+<img class="w-270 border shadow-lg mt-4" src="/images/df-class-row.png" alt="" />
 
-# 程序切片
+
+---
+
+# 程序切片——功能实现
+
+<div class="grid grid-cols-2 gap-x-4">
+
+<div>
+
+### 时序图
+
+<img class="w-100 shadow-lg mt-4" src="/images/slice-seq.png" alt="" />
+
+</div>
+
+<div>
+
+### 切片样例
 
 <div>
 ```python
@@ -493,12 +508,29 @@ layout: two-cols
 ```
 </div>
 
----
-layout: two-cols
-layoutClass: gap-16
+</div>
+
+</div>
+
 ---
 
-# 变量依赖
+# 程序切片——详细设计
+
+<div class="grid grid-cols-2 gap-x-4">
+
+<div>
+
+### 切片算法
+
+<img class="w-100 shadow-lg mt-4" src="/images/cfg3.png" alt="" />
+
+</div>
+
+<div>
+
+### 变量依赖
+
+<div class="mt-4">
 
 <div>
 
@@ -511,7 +543,7 @@ layoutClass: gap-16
 ```
 
 </div>
-<div>
+<div class="text-center border shadow-md mt-4">
 
 ```mermaid
 flowchart TB
@@ -531,9 +563,31 @@ C --> D
 
 </div>
 
-::right::
 
-# 覆盖分析
+</div>
+
+</div>
+
+</div>
+
+
+---
+
+# 覆盖标准分析——功能实现
+
+<div class="grid grid-cols-2 gap-x-4">
+
+<div>
+
+### 时序图
+
+<img class="w-90 shadow-lg mt-4" src="/images/coverage-seq.png" alt="" />
+
+</div>
+
+<div>
+
+### 运行过程
 
 <div class="grid grid-cols-2 gap-5">
 <div>
@@ -593,6 +647,36 @@ func(10)
 
 </div>
 
+</div>
+
+</div>
+
+---
+
+# 覆盖标准分析——详细设计
+
+<div class="grid grid-cols-2 gap-x-4">
+
+<div>
+
+### 覆盖标准
+
+<img class="w-90 shadow-lg mt-4 border" src="/images/metrics.png" alt="" />
+
+</div>
+
+<div>
+
+### 分析算法
+
+<img class="w-90 shadow-lg mt-4" src="/images/coverage-algo.png" alt="" />
+
+
+</div>
+
+</div>
+
+
 ---
 
 # UI设计
@@ -643,3 +727,17 @@ image: /images/usetestcase.png
 backgroundSize: contain
 ---
 
+---
+layout: center
+class: 'text-center pb-5 :'
+---
+
+# 感谢各位老师批评指正
+
+北京航空航天大学软件学院
+
+答辩人：阮中秋
+
+指导老师：贾经冬
+
+2024.5.27
