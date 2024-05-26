@@ -6,7 +6,7 @@
     "build": "slidev build",
     "dev": "slidev --open",
     "export": "slidev export",
-    "build-base": "slidev build --base /ppt/middle-report/"
+    "build-base": "slidev build --base /ppt/final-report/"
   },
   "dependencies": {
     "@chenfengyuan/vue-countdown": "^2.1.2",
