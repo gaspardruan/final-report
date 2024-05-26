@@ -389,9 +389,11 @@ flowchart TB
 
 ### dc路径图
 
+- dc路径图 = 控制流图 + dc路径
+
 <arrow x1="635" y1="330" x2="670" y2="330" color="#953"/>
 
-<div class="grid grid-cols-3 gap-x-4">
+<div class="grid grid-cols-3 gap-x-4 -mt-8">
 
 <div class="col-span-1 self-center">
 
