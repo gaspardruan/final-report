@@ -285,29 +285,9 @@ mdc: true
 
 ---
 
-# UI设计
+# 数据流——功能实现
 
-<div class="w-full flex justify-center">
-<img src="/images/ui-pure.png" class="h-110"/>
-</div>
 
-<arrow  x1="110" y1="210" x2="175" y2="234" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-43 left-4 text-[#953] font-bold">文件管理区</p>
-
-<arrow  x1="110" y1="380" x2="175" y2="404" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-85 left-8 text-[#953] font-bold">代码结构</p>
-
-<arrow  x1="875" y1="100" x2="810" y2="124" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-17 right-10 text-[#953] font-bold">工具栏</p>
-
-<arrow  x1="445" y1="80" x2="450" y2="204" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-5 left-100 text-[#953] font-bold">编辑窗口<br>(编辑+代码高亮)</p>
-
-<arrow  x1="855" y1="260" x2="810" y2="274" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-57 right-5 text-[#953] font-bold">代码切片窗口</p>
-
-<arrow  x1="865" y1="420" x2="800" y2="444" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-97 right-5 text-[#953] font-bold">可视化窗口</p>
 
 ---
 level:2
@@ -377,40 +357,6 @@ flowchart TB
 </div>
 
 
----
-
-# 例子
-
-<div class="grid grid-cols-2 gap16">
-<div>
-
-```python
-1: x, y = 0, 0
-2: while x < 10:
-3:   y += x * 2
-4:   x += 1
-5: print(y)
-```
-
-</div>
-<div>
-
-```mermaid
-flowchart TB
-  A["BLOCK 0\n 1: x, y = 0, 0"]
-  B["BLOCK 1\n 2: x < 10"]
-  C["BLOCK 2\n 3: y += x * 2\n4: x += 1"]
-  D["BLOCK 3\n 4: print(y)"]
-
-A --> B
-B -->|true| C
-C --> B
-B -->|false| D
-
-```
-
-</div>
-</div>
 
 ---
 layout: two-cols
@@ -588,22 +534,52 @@ func(10)
 </div>
 
 ---
+
+# UI设计
+
+<div class="w-full flex justify-center">
+<img src="/images/ui-pure.png" class="h-110"/>
+</div>
+
+<arrow  x1="110" y1="210" x2="175" y2="234" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-43 left-4 text-[#953] font-bold">文件管理区</p>
+
+<arrow  x1="110" y1="380" x2="175" y2="404" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-85 left-8 text-[#953] font-bold">代码结构</p>
+
+<arrow  x1="875" y1="100" x2="810" y2="124" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-17 right-10 text-[#953] font-bold">工具栏</p>
+
+<arrow  x1="445" y1="80" x2="450" y2="204" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-5 left-100 text-[#953] font-bold">编辑窗口<br>(编辑+代码高亮)</p>
+
+<arrow  x1="855" y1="260" x2="810" y2="274" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-57 right-5 text-[#953] font-bold">代码切片窗口</p>
+
+<arrow  x1="865" y1="420" x2="800" y2="444" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-97 right-5 text-[#953] font-bold">可视化窗口</p>
+
+---
 layout: image
-image: /images/control-flow.png
+image: /images/usecfg.png
+backgroundSize: contain
 ---
 
 ---
 layout: image
-image: /images/slice.png
+image: /images/useslice.png
+backgroundSize: contain
 ---
 
 ---
 layout: image
-image: /images/dc-path.png
+image: /images/usedf.png
+backgroundSize: contain
 ---
 
 ---
 layout: image
-image: /images/test-case.png
+image: /images/usetestcase.png
+backgroundSize: contain
 ---
 
