@@ -123,7 +123,7 @@ mdc: true
 
 ---
 
-# 概要设计
+# 概要设计——架构与技术
 
 <div class="grid grid-cols-3 gap-x-4">
 
@@ -142,7 +142,7 @@ mdc: true
 <div class="grid grid-cols-3 gap-2 mt-4 border shadow-lg p-1">
 <div class="col-span-1 text-center">
 
-<logos-electron class="text-6xl" />
+<logos-electron class="text-3xl" />
 
 ##### Electron
 
@@ -159,7 +159,7 @@ mdc: true
 <div class="grid grid-cols-3 gap-2 mt-4 border shadow-lg p-1">
 <div class="col-span-1 text-center">
 
-<logos-react class="text-6xl" />
+<logos-react class="text-3xl" />
 
 ##### React
 
@@ -176,9 +176,9 @@ mdc: true
 <div class="grid grid-cols-3 gap-2 mt-4 border shadow-lg p1">
 <div class="col-span-1 text-center">
 
-<img class="w-18" src="/images/tree-sitter-small.png" />
+<img class="w-9 mx-auto" src="/images/tree-sitter-small.png" />
 
-##### Electron
+##### Tree-Sitter
 
 </div>
 
@@ -190,7 +190,92 @@ mdc: true
 
 </div>
 
+<div class="grid grid-cols-3 gap-2 mt-4 border shadow-lg p1">
+<div class="col-span-1 text-center">
+
+<img class="w-9 mx-auto" src="/images/mermaid.svg" />
+
+##### Mermaid
+
 </div>
+
+<div class="col-span-2 text-center self-center underline decoration-sky-500 underline-offset-4 decoration-2">
+
+##### 基于JS的制图工具
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+---
+level:2
+---
+
+# 概要设计——功能实现逻辑概览
+
+<div class="w-full flex justify-center">
+
+```mermaid { scale: 0.65 }
+flowchart TB
+    subgraph 语法解析
+        direction LR
+        A[python源代码]
+        B[词法分析]
+        C[语法分析]
+        D[语法树]
+        N[词法解析器]
+        O[语法解析器]
+        P[python代码规则]
+        Q[tree-sitter工具]
+        A --> B
+        B --> C
+        P --> Q
+        Q --> N
+        Q --> O
+        N --> B
+        O --> C
+        C --> D
+    end
+
+    subgraph 静态分析
+        direction LR
+        E[扩展语法树]
+        F[程序控制流]
+        G["程序数据流(du路径)"]
+        H["程序数据流(dc路径)"]
+        I[程序切片]
+        S[变量依赖分析]
+
+        E --> F
+        F --> G
+        G --> H
+        G --> I
+        H --> S
+        I --> S
+    end
+
+    subgraph 动态分析
+        direction LR
+        J[手动输入测试用例]
+        K[python解释器]
+        L[执行路径收集]
+        M[执行路径对dc路径的覆盖分析]
+        R[python测试函数]
+        R --> J
+        J --> K
+        K -->|执行| L
+        L --> M
+
+    end
+
+    语法解析 --> 静态分析
+    静态分析 --> 动态分析
+
+```
 
 </div>
 
@@ -210,7 +295,7 @@ mdc: true
 
   <div>
   
-  ### 预期结果
+  ### 控制流图
 
   <div class="grid grid-cols-4 mt-4">
 
@@ -276,12 +361,15 @@ mdc: true
 
 </div>
 
+<div class="shadow-lg">
+
 | | $B_0$ | $B_1$ | $B_2$ | $B_3$ | $B_4$ | $B_5$ | $B_6$ | $B_7$ | $B_8$ |
 |---|---|---|---|---|---|---|---|---|---|
 | DOM | \{0\} | \{0,1\} | \{0,1,2\} | \{0,1,3\} | \{0,1,3,4\} | \{0,1,5\} | \{0,1,5,6\} | \{0,1,5,7\} | \{0,1,5,8\} |
 | IDOM | - | 0 | 1 | 1 | 3 | 1 | 5 | 5 | 5 |
 | DF | $\emptyset$ | \{$B_1$\} | \{$B_3$\} | \{$B_1$\} | $\emptyset$ | \{$B_3$\} | \{$B_7$\} | \{$B_3$\} | \{$B_7$\} |
 
+</div>
 
 ---
 
@@ -289,72 +377,7 @@ mdc: true
 
 
 
----
-level:2
----
 
-# 功能实现逻辑
-
-<div class="w-full flex justify-center">
-```mermaid { scale: 0.65 }
-flowchart TB
-    subgraph 语法解析
-        direction LR
-        A[python源代码]
-        B[词法分析]
-        C[语法分析]
-        D[语法树]
-        N[词法解析器]
-        O[语法解析器]
-        P[python代码规则]
-        Q[tree-sitter工具]
-        A --> B
-        B --> C
-        P --> Q
-        Q --> N
-        Q --> O
-        N --> B
-        O --> C
-        C --> D
-    end
-
-    subgraph 静态分析
-        direction LR
-        E[扩展语法树]
-        F[程序控制流]
-        G["程序数据流(du路径)"]
-        H["程序数据流(dc路径)"]
-        I[程序切片]
-        S[变量依赖分析]
-
-        E --> F
-        F --> G
-        G --> H
-        G --> I
-        H --> S
-        I --> S
-    end
-
-    subgraph 动态分析
-        direction LR
-        J[手动输入测试用例]
-        K[python解释器]
-        L[执行路径收集]
-        M[执行路径对dc路径的覆盖分析]
-        R[python测试函数]
-        R --> J
-        J --> K
-        K -->|执行| L
-        L --> M
-
-    end
-
-    语法解析 --> 静态分析
-    静态分析 --> 动态分析
-
-```
-
-</div>
 
 
 
