@@ -239,7 +239,48 @@ mdc: true
 </div>
 
 
+---
 
+# 控制流——Dominance Frontiers
+
+<arrow x1="330" y1="200" x2="380" y2="200" color="#953"/>
+
+<arrow x1="545" y1="200" x2="580" y2="200" color="#953"/>
+
+<arrow x1="720" y1="200" x2="760" y2="200" color="#953"/>
+
+<div class="grid grid-cols-5 mb-4 -ml-12">
+
+<img class="w-60 shadow-lg  border col-span-2 self-center mx-auto" src="/images/ast.png" />
+
+<div class="self-center mx-auto">
+
+```ts
+{
+  type: 'assign',
+  op: '=',
+  sources: [],
+  targets: [],
+  location: {}
+  parent: {},
+  next_sibling: {},
+  last_sibling: {},
+}
+```
+
+</div>
+
+<img class="w-30 shadow-lg  border self-center mx-auto" src="/images/cfg-example.png" />
+
+<img class="w-30 shadow-lg  border self-center mx-auto" src="/images/cfg-dt.png" />
+
+</div>
+
+| | $B_0$ | $B_1$ | $B_2$ | $B_3$ | $B_4$ | $B_5$ | $B_6$ | $B_7$ | $B_8$ |
+|---|---|---|---|---|---|---|---|---|---|
+| DOM | \{0\} | \{0,1\} | \{0,1,2\} | \{0,1,3\} | \{0,1,3,4\} | \{0,1,5\} | \{0,1,5,6\} | \{0,1,5,7\} | \{0,1,5,8\} |
+| IDOM | - | 0 | 1 | 1 | 3 | 1 | 5 | 5 | 5 |
+| DF | $\emptyset$ | \{$B_1$\} | \{$B_3$\} | \{$B_1$\} | $\emptyset$ | \{$B_3$\} | \{$B_7$\} | \{$B_3$\} | \{$B_7$\} |
 
 
 ---
